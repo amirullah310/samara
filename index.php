@@ -1,3 +1,9 @@
+<?php
+require './database/koneksi.php';
+
+$sql = "SELECT * FROM kegiatan ORDER BY tanggal_kegiatan DESC";
+$result = $koneksi->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,48 +37,7 @@
   <!-- Konten lainnya -->
 
 
-
-    <nav class="navbar fade-down" data-aos="fade-down" data-aos-duration="800">
-        <div class="content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img class="img-icon" src="img/icon-logo.png" alt="">
-                </div>
-                <div class="logo-title">
-                    <a class="title-icon" href="">SAMARA</a>
-                </div>
-            </div>
-                <ul class="menu-list">
-                    <div class="icon cancel-btn">
-                        <i class="fa-solid fa-times"></i>
-                    </div>
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-house"></i> Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.html">
-                            <i class="fa-solid fa-user"></i> About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="blog.html">
-                            <i class="fa-solid fa-blog"></i> Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <i class="fa-solid fa-envelope"></i> Contact
-                        </a>
-                    </li>
-                </ul>
-
-            <div class="icon menu-btn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+<?php include 'navbar.php' ?>
 
 <section class="hero">
   <div class="hero-left fade-right" data-aos="fade-right" data-aos-duration="1200">
@@ -190,47 +155,35 @@
   <div class="container">
     <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Event Mendatang</h2>
     <div class="events-grid">
-      <article class="event-card fade-up" data-aos="fade-up" data-aos-duration="1000">
-        <div class="event-date">
-          <span class="event-day">15</span>
-          <span class="event-month">JUL</span>
-        </div>
-        <div class="event-details">
-          <h3 class="event-title">Workshop Pengelolaan Sampah</h3>
-          <p class="event-description">
-            Pelajari cara efektif mengelola sampah rumah tangga dan mengurangi limbah plastik.
-          </p>
-          <a href="event-detail.html" class="event-link" aria-label="Detail Workshop Pengelolaan Sampah">Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </article>
+        <?php
+            if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+            // Ubah tanggal ke format hari & bulan
+            $tanggal = date("d", strtotime($row["tanggal_kegiatan"]));
+            $bulan   = strtoupper(date("M", strtotime($row["tanggal_kegiatan"])));
 
-      <article class="event-card fade-up" data-aos="fade-up" data-aos-duration="1200">
-        <div class="event-date">
-          <span class="event-day">1</span>
-          <span class="event-month">AGS</span>
-        </div>
-        <div class="event-details">
-          <h3 class="event-title">Penanaman Pohon Massal</h3>
-          <p class="event-description">
-            Bergabung dalam aksi menanam ratusan pohon untuk hijaukan kembali lingkungan kita.
-          </p>
-          <a href="event-detail.html" class="event-link" aria-label="Detail Penanaman Pohon Massal">Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </article>
+            // Potong deskripsi hanya beberapa karakter
+        $preview = substr(strip_tags($row["deskripsi_kegiatan"]), 0, 120) . "...";
 
-      <article class="event-card fade-up" data-aos="fade-up" data-aos-duration="1400">
+        echo '<article class="event-card fade-up" data-aos="fade-up" data-aos-duration="1000">
         <div class="event-date">
-          <span class="event-day">20</span>
-          <span class="event-month">AGS</span>
+          <span class="event-day">' . $tanggal . '</span>
+          <span class="event-month">' . $bulan . '</span>
         </div>
         <div class="event-details">
-          <h3 class="event-title">Kampanye Kurangi Plastik</h3>
-          <p class="event-description">
-            Kampanye sadar lingkungan untuk mengurangi penggunaan plastik sekali pakai.
-          </p>
-          <a href="event-detail.html" class="event-link" aria-label="Detail Kampanye Kurangi Plastik">Selengkapnya <i class="fa-solid fa-arrow-right"></i></a>
+          <h3 class="event-title">' . htmlspecialchars($row["nama_kegiatan"]) . '</h3>
+          <p class="event-description">' . htmlspecialchars($preview) . '</p>
+          <a href="event-detail.php?id=' . urlencode($row["id_kegiatan"]) . '" class="event-link" aria-label="Detail ' . htmlspecialchars($row["nama_kegiatan"]) . '">
+        Selengkapnya <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
-      </article>
+      </article>';
+              }
+            } else {
+              echo "<p>Tidak ada kegiatan yang tersedia.</p>";
+            }
+            $koneksi->close();
+?>
     </div>
   </div>
 </section>

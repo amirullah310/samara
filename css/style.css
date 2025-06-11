@@ -96,6 +96,16 @@
     width: 100%;
 }
 
+.menu-list a {
+    color: #fff; /* warna default navbar */
+    transition: color 0.3s ease;
+}
+
+.menu-list a.active {
+    color: #1b5e20; /* warna saat aktif */
+}
+
+
 /* Icon buttons for mobile */
 .icon {
     color: #fff;
@@ -627,6 +637,7 @@
         }
         .menu-list li a {
             font-size: 20px;
+            color: #fff;
         }
         .navbar {
           height: 60px;

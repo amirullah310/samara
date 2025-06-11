@@ -17,30 +17,7 @@
      <div class="falling-leaves"></div>
 
   <!-- Navbar -->
-  <nav class="navbar fade-down">
-    <div class="content">
-      <div class="logo">
-        <div class="logo-icon">
-          <img class="img-icon" src="img/icon-logo.png" alt="Logo Samara">
-        </div>
-        <div class="logo-title">
-          <a class="title-icon" href="#">SAMARA</a>
-        </div>
-      </div>
-      <ul class="menu-list">
-        <div class="icon cancel-btn">
-          <i class="fa-solid fa-times"></i>
-        </div>
-        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li><a href="about.html"><i class="fa-solid fa-user"></i> About</a></li>
-        <li><a href="blog.html"><i class="fa-solid fa-blog"></i> Blog</a></li>
-        <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-      </ul>
-      <div class="icon menu-btn">
-        <i class="fa-solid fa-bars"></i>
-      </div>
-    </div>
-  </nav>
+<?php include 'navbar.php' ?>
 
   <!-- Breadcrumb -->
   <div class="penanda">
