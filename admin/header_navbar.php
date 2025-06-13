@@ -1,52 +1,48 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/header.css">
-    <style>
-        <?php include 'css/header.css' ?>
-    </style>
-</head>
-<body>
-    <!-- navbar -->
-    <div class="container">
-    <div class="profile">
-        <div class="op">
-           <h2><a href="../pagehome/index.php">DASHBOARD SAMARA</a></h2>
-        </div>
-        <div class="oi">
-            <div class="dropbtnn"><img class="img" src="https://cdn.iconscout.com/icon/free/png-128/person-1780867-1514182.png"  alt=""></div>
-            <div class="dropdownn-contentt">
-            <a href="../database/logout.php">Log Out</a>
+<?php
+    $current_page = basename($_SERVER['PHP_SELF']);
+?>
+<nav class="navbar fade-down" data-aos="fade-down" data-aos-duration="800">
+    <div class="content">
+        <div class="logo">
+            <div class="logo-icon">
+                <img class="img-icon" src="img/icon-logo.png" alt="Logo">
+            </div>
+            <div class="logo-title">
+                <a class="title-icon" href="index.php">SAMARA</a>
             </div>
         </div>
-    </div>
-    <!-- sidebar -->
-    <div class="sidebar">
-        <div class="navbar">
-        <ul id="menu_dropdown">
-   <li class="menu_utama"><a href="index.php">Home</a></li>
-   <li class="menu_utama"><a href="listblog.php">All Blog</a>
-   <ul class="menu_sub">
-     <li><a href="listblog.php">List Blog</a></li>
-     <li><a href="addpost.php">Add Blog</a></li>
-   </ul>
-   </li>
-   <li class="menu_utama"><a href="listevent.php">All Event</a>
-   <ul class="menu_sub">
-     <li><a href="listevent.php">List Event</a></li>
-     <li><a href="addpost.php">Add Event</a></li>
-   </ul>
-   </li>
-   <li class="menu_utama"><a href="setting.php">Setting</a></li>
-  
-
-</ul>
+        <ul class="menu-list">
+            <div class="icon cancel-btn">
+                <i class="fa-solid fa-times"></i>
+            </div>
+            <li>
+                <a href="index.php" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-house"></i> Home
+                </a>
+            </li>
+            <li>
+                <a href="blog.php" class="<?php echo ($current_page == 'blog.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-blog"></i> Data Blog
+                </a>
+            </li>
+            <li>
+                <a href="tipeartikel.php" class="<?php echo ($current_page == 'tipeartikel.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-tags"></i> Tipe Artikel
+                </a>
+            </li>
+            <li>
+                <a href="event.php" class="<?php echo ($current_page == 'event.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-calendar-days"></i> Data Event
+                </a>
+            </li>
+            <li>
+                <a href="setting.php" class="<?php echo ($current_page == 'setting.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-gear"></i> Setting
+                </a>
+            </li>
+        </ul>
+        <div class="icon menu-btn">
+            <i class="fa-solid fa-bars"></i>
         </div>
     </div>
-</body>
-</html>
+</nav>
