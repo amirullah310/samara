@@ -30,11 +30,11 @@
 
 <section id="developers">
   <div class="container">
-    <h2 class="section-title">Developers</h2>
+    <h2 class="section-title fade-down">Developers</h2>
     <div class="dev-card-wrapper">
 
       <!-- Amirullah -->
-      <div class="dev-card">
+      <div class="dev-card fade-down">
         <img src="img/amiruddin.jpeg" alt="Amirullah">
         <h3>Amirullah</h3>
         <p class="role">Front-End Developer</p>
@@ -52,7 +52,7 @@
       </div>
 
       <!-- Al Faiz Akbar Thaib -->
-      <div class="dev-card">
+      <div class="dev-card fade-down">
         <img src="img/alarm.jpeg" alt="Al Faiz Akbar Thaib">
         <h3>Al Faiz Akbar Thaib</h3>
         <p class="role">Back-End Developer</p>
@@ -70,7 +70,7 @@
       </div>
 
       <!-- Farid Haiqal -->
-      <div class="dev-card">
+      <div class="dev-card fade-down">
         <img src="img/fardi.jpeg" alt="Farid Haiqal">
         <h3>Farid Haiqal</h3>
         <p class="role">UI/UX Designer</p>
@@ -136,22 +136,22 @@
             <div class="icon-circle">
               <i class="fas fa-map-marker-alt"></i>
             </div>
-            <h3>Alamat Kantor</h3>
-            <p>Jalan Merdeka No. 45, Lhokseumawe, Aceh , (Dekat Politeknik Negeri Lhokseumawe)</p>
+            <h3>Alamat</h3>
+            <p>Lhokseumawe, Aceh, Indonesia</p>
           </div>
           <div class="info-item fade-up" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-circle">
               <i class="fas fa-phone"></i>
             </div>
             <h3>Telepon</h3>
-            <p>+62 821 6543 2100</p>
+            <p>+62 812 3456 7890</p>
           </div>
           <div class="info-item fade-up" data-aos="fade-up" data-aos-delay="400">
             <div class="icon-circle">
               <i class="fas fa-envelope"></i>
             </div>
             <h3>Email</h3>
-            <p>info@samara.id</p>
+            <p>contactsamaraofficial@gmail.com</p>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
 
 
 
-  <footer>
+<footer>
   <div class="footer-container">
     <!-- Logo & Deskripsi -->
     <div class="footer-section">
@@ -180,10 +180,10 @@
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="blog.php">Artikel</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
 
@@ -192,8 +192,8 @@
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>

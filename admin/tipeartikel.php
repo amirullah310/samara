@@ -26,7 +26,7 @@ $dataTipeArtikel = query("SELECT * FROM tipe_artikel ORDER BY id_tipe DESC");
 
 <?php include 'header_navbar.php'; ?>
 
-<div class="tipeartikel-container">
+<div class="tipeartikel-container fade-down">
   <h1 class="tipeartikel-heading">Semua Tipe Artikel</h1>
 
   <?php if (!empty($dataTipeArtikel)) : ?>
@@ -85,10 +85,11 @@ $dataTipeArtikel = query("SELECT * FROM tipe_artikel ORDER BY id_tipe DESC");
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="artikel.php">Data Artikel</a></li>
+        <li><a href="tipeartikel.php">Data Tipe Artikel</a></li>
+        <li><a href="event.php">Data Event</a></li>
+        <li><a href="setting.php">Setting</a></li>
       </ul>
     </div>
 
@@ -97,8 +98,8 @@ $dataTipeArtikel = query("SELECT * FROM tipe_artikel ORDER BY id_tipe DESC");
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>

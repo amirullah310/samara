@@ -167,3 +167,30 @@ window.onclick = function(event) {
     });
   });
 
+// const modall = document.getElementById("artikelModal");
+//   const btn = document.getElementById("openModalBtn");
+//   const span = document.getElementsByClassName("close")[0];
+
+//   btn.onclick = function() {
+//     modall.style.display = "block";
+//   }
+
+//   span.onclick = function() {
+//     modall.style.display = "none";
+//   }
+
+//   window.onclick = function(event) {
+//     if (event.target == modall) {
+//       modall.style.display = "none";
+//     }
+//   }
+document.getElementById("openModalBtn").onclick = function () {
+  document.querySelector(".modal").style.display = "block";
+  document.body.classList.add("modal-open");
+};
+
+document.querySelector(".close").onclick = function () {
+  document.querySelector(".modal").style.display = "none";
+  document.body.classList.remove("modal-open");
+};
+

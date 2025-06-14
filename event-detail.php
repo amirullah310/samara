@@ -45,7 +45,7 @@ if (isset($_GET['id'])) {
 
         echo '
         <div class="event-detail-container">
-          <div class="event-detail-header">
+          <div class="event-detail-header fade-down">
             <div class="event-date">
               <span class="day">' . $tanggal . '</span>
               <span class="month">' . $bulan . '</span>
@@ -54,14 +54,14 @@ if (isset($_GET['id'])) {
               <h1>' . $judul . '</h1>
               </div>
               </div>
-              <div class="event-image">
+              <div class="event-image fade-down">
               <img src="' . $thumbnail . '" alt="' . $judul . '">
               </div>
-              <div class="event-description">
+              <div class="event-description fade-down">
               ' . $deskripsi . '
               </div>
               </br>
-              <button class="back-button" onclick="window.history.back()">← Kembali</button>
+              <button class="back-button fade-down" onclick="window.history.back()">← Kembali</button>
               </div>';
             } else {
               echo "<p>Kegiatan tidak ditemukan.</p>";
@@ -88,29 +88,29 @@ if (isset($_GET['id'])) {
         <a href="#"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-    
+
     <!-- Halaman -->
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="blog.php">Artikel</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
-    
+
     <!-- Kontak -->
     <div class="footer-section">
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>
-  
+
   <!-- Hak Cipta -->
   <div class="footer-bottom">
     <p>&copy; 2025 SAMARA. All rights reserved.</p>

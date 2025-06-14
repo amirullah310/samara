@@ -1,34 +1,54 @@
 <?php
 require '../database/koneksi.php';
 
+
 session_start();
 if (!isset($_SESSION['id_admin'])) {
   header("location:login.php");
   exit;
 }
+
 error_reporting(0);
 
+// // Fungsi query umum (jika belum ada)
+// function query($query) {
+//   global $koneksi;
+//   $result = mysqli_query($koneksi, $query);
+//   $rows = [];
+//   while ($row = mysqli_fetch_assoc($result)) {
+//     $rows[] = $row;
+//   }
+//   return $rows;
+// }
 
-// Ambil data user dan blog terbaru
-$dataUser = query("SELECT * FROM admin ORDER BY id_admin DESC LIMIT 3");
+// Ambil data artikel terbaru (limit 5)
 $dataArtikel = query("SELECT * FROM artikel ORDER BY id_artikel DESC LIMIT 5");
 
-// Hitung total artikel (blog)
+// Ambil data event terbaru (limit 5)
+$dataEvent = query("SELECT * FROM kegiatan ORDER BY id_kegiatan DESC LIMIT 5");
+
+// Ambil semua admin berdasarkan last login DESC
+$dataSemuaAdmin = query("SELECT * FROM admin ORDER BY last_login DESC");
+
+// Hitung total blog
 $getBlog = mysqli_query($koneksi, "SELECT * FROM artikel");
 $countBlog = mysqli_num_rows($getBlog);
-
-// Hitung total user (semua role)
-$getUser = mysqli_query($koneksi, "SELECT * FROM admin");
-$countUser = mysqli_num_rows($getUser);
 
 // Hitung total event
 $getEvent = mysqli_query($koneksi, "SELECT * FROM kegiatan");
 $countEvent = mysqli_num_rows($getEvent);
 
+// Hitung total user (dalam konteks ini: semua admin dianggap user)
+$getUser = mysqli_query($koneksi, "SELECT * FROM admin");
+$countUser = mysqli_num_rows($getUser);
+
 // Hitung total admin
 $getAdmin = mysqli_query($koneksi, "SELECT * FROM admin");
 $countAdmin = mysqli_num_rows($getAdmin);
+
+$now = date('Y-m-d H:i:s');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +77,7 @@ $countAdmin = mysqli_num_rows($getAdmin);
 
 <?php include 'header_navbar.php'; ?>
 
-<div class="dashboard-wrapper">
+<div class="dashboard-wrapper fade-down">
   <h1 class="dashboard-title">Dashboard Overview</h1>
 
   <div class="dashboard-cards">
@@ -112,6 +132,32 @@ $countAdmin = mysqli_num_rows($getAdmin);
     <?php endforeach; ?>
   </ul>
 </div>
+<div class="latest-box">
+  <h3>Aktivitas Admin</h3>
+  <ul>
+    <?php foreach ($dataSemuaAdmin as $admin): ?>
+      <li style="margin-bottom: 10px;">
+        <i class="fa-solid fa-user-shield" style="margin-right: 5px;"></i>
+        <strong><?= htmlspecialchars($admin['nama_admin']) ?></strong>
+
+        <?php if ($admin['id_admin'] == $_SESSION['id_admin']): ?>
+          <span style="color: green; font-weight: bold;"> • Online</span>
+        <?php else: ?>
+          <?php
+            if (!empty($admin['last_login']) && $admin['last_login'] !== '0000-00-00 00:00:00') {
+              $formattedLogin = date("d M Y H:i:s", strtotime($admin['last_login']));
+              echo "<span style='color: gray; font-style: italic;'> • Last login: $formattedLogin</span>";
+            } else {
+              echo "<span style='color: gray; font-style: italic;'> • Belum pernah login</span>";
+            }
+          ?>
+        <?php endif; ?>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+</div>
+
+
 
   </div>
 </div>
@@ -134,10 +180,11 @@ $countAdmin = mysqli_num_rows($getAdmin);
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="artikel.php">Data Artikel</a></li>
+        <li><a href="tipeartikel.php">Data Tipe Artikel</a></li>
+        <li><a href="event.php">Data Event</a></li>
+        <li><a href="setting.php">Setting</a></li>
       </ul>
     </div>
 
@@ -146,8 +193,8 @@ $countAdmin = mysqli_num_rows($getAdmin);
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>

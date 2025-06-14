@@ -21,13 +21,13 @@
                 </a>
             </li>
             <li>
-                <a href="blog.php" class="<?php echo ($current_page == 'blog.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-blog"></i> Data Blog
+                <a href="artikel.php" class="<?php echo ($current_page == 'artikel.php') ? 'active' : ''; ?>">
+                    <i class="fa-solid fa-blog"></i> Data Artikel
                 </a>
             </li>
             <li>
                 <a href="tipeartikel.php" class="<?php echo ($current_page == 'tipeartikel.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-tags"></i> Tipe Artikel
+                    <i class="fa-solid fa-tags"></i> Data Tipe Artikel
                 </a>
             </li>
             <li>

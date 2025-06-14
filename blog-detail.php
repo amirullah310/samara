@@ -38,7 +38,7 @@ $data = mysqli_fetch_assoc($query);
 
 <?php if ($data): ?>
   <div class="article-detail">
-    <div class="article-header">
+    <div class="article-header fade-down">
       <h1><?= htmlspecialchars($data['judul']) ?></h1>
       <div class="article-meta">
         <span class="author">Oleh: <?= htmlspecialchars($data['nama_admin']) ?></span>
@@ -47,15 +47,15 @@ $data = mysqli_fetch_assoc($query);
       </div>
     </div>
 
-    <div class="article-image">
+    <div class="article-image fade-down">
       <img src="<?= htmlspecialchars($data['gambar']) ?>" alt="<?= htmlspecialchars($data['judul']) ?>" />
     </div>
 
-    <div class="article-content">
+    <div class="article-content fade-down">
       <?= nl2br($data['isi']) ?>
     </div>
 </br>
-    <button class="back-button" onclick="window.history.back()">← Kembali</button>
+    <button class="back-button fade-down" onclick="window.history.back()">← Kembali</button>
   </div>
 
 <?php else: ?>
@@ -67,9 +67,12 @@ $data = mysqli_fetch_assoc($query);
 <!-- Footer -->
 <footer>
   <div class="footer-container">
+    <!-- Logo & Deskripsi -->
     <div class="footer-section">
       <img src="img/icon-logo.png" alt="Logo SAMARA" class="footer-logo">
-      <p>SAMARA adalah organisasi yang berdedikasi untuk mendukung pelestarian alam dan mendorong kesadaran lingkungan hidup.</p>
+      <p>
+        SAMARA adalah organisasi yang berdedikasi untuk mendukung pelestarian alam dan mendorong kesadaran lingkungan hidup.
+      </p>
       <div class="social-links">
         <a href="#"><i class="fa-brands fa-facebook"></i></a>
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -77,26 +80,29 @@ $data = mysqli_fetch_assoc($query);
       </div>
     </div>
 
+    <!-- Halaman -->
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="blog.php">Artikel</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
 
+    <!-- Kontak -->
     <div class="footer-section">
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>
 
+  <!-- Hak Cipta -->
   <div class="footer-bottom">
     <p>&copy; 2025 SAMARA. All rights reserved.</p>
   </div>

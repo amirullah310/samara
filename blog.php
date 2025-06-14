@@ -46,7 +46,7 @@ $result = $koneksi->query($query);
     <div class="container">
       <h2 class="fade-up" data-aos="fade-up" data-aos-duration="800">Artikel Tentang Alam dan Lingkungan</h2>
 
-      <div class="blog-filters">
+      <div class="blog-filters fade-down">
   <form action="blog.php" method="GET" class="search-filter-form">
     <div class="search-bar">
       <input type="text" name="q" value="<?= htmlspecialchars($keyword) ?>" placeholder="Cari artikel..." />
@@ -98,39 +98,48 @@ $result = $koneksi->query($query);
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-section">
-        <img src="img/icon-logo.png" alt="Logo SAMARA" class="footer-logo">
-        <p>SAMARA adalah organisasi yang berdedikasi untuk mendukung pelestarian alam dan mendorong kesadaran lingkungan hidup.</p>
-        <div class="social-links">
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>HALAMAN</h4>
-        <ul>
-          <li><a href="index.html">Beranda</a></li>
-          <li><a href="about.html">Tentang Kami</a></li>
-          <li><a href="blog.php">Blog</a></li>
-          <li><a href="contact.html">Kontak</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>KONTAK</h4>
-        <ul>
-          <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-          <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-          <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
-        </ul>
+<footer>
+  <div class="footer-container">
+    <!-- Logo & Deskripsi -->
+    <div class="footer-section">
+      <img src="img/icon-logo.png" alt="Logo SAMARA" class="footer-logo">
+      <p>
+        SAMARA adalah organisasi yang berdedikasi untuk mendukung pelestarian alam dan mendorong kesadaran lingkungan hidup.
+      </p>
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 SAMARA. All rights reserved.</p>
+
+    <!-- Halaman -->
+    <div class="footer-section">
+      <h4>HALAMAN</h4>
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="blog.php">Artikel</a></li>
+        <li><a href="contact.php">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- Kontak -->
+    <div class="footer-section">
+      <h4>KONTAK</h4>
+      <ul>
+        <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hak Cipta -->
+  <div class="footer-bottom">
+    <p>&copy; 2025 SAMARA. All rights reserved.</p>
+  </div>
+</footer>
 
   <button id="backToTop" title="Kembali ke atas" aria-label="Back to top">
     <i class="fa-solid fa-arrow-up"></i>

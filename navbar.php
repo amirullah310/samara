@@ -27,7 +27,7 @@
             </li>
             <li>
                 <a href="blog.php" class="<?php echo ($current_page == 'blog.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-blog"></i> Blog
+                    <i class="fa-solid fa-blog"></i> Artikel
                 </a>
             </li>
             <li>

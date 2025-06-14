@@ -51,17 +51,17 @@ INSERT INTO `admin` (`id_admin`, `nama_admin`, `email`, `nomor_hp`, `alamat`, `p
 -- Table structure for table `artikel`
 --
 
-CREATE TABLE `artikel` (
-  `id_artikel` varchar(5) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `isi` text NOT NULL,
-  `tanggal_publish` datetime DEFAULT current_timestamp(),
-  `deskripsi_singkat` varchar(255) DEFAULT NULL,
-  `status` enum('draft','publish') DEFAULT 'draft',
-  `id_admin` varchar(5) DEFAULT NULL,
-  `id_tipe` varchar(6) DEFAULT NULL,
-  `gambar` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  CREATE TABLE `artikel` (
+    `id_artikel` varchar(5) NOT NULL,
+    `judul` varchar(255) NOT NULL,
+    `isi` text NOT NULL,
+    `tanggal_publish` datetime DEFAULT current_timestamp(),
+    `deskripsi_singkat` varchar(255) DEFAULT NULL,
+    `status` enum('draft','publish') DEFAULT 'draft',
+    `id_admin` varchar(5) DEFAULT NULL,
+    `id_tipe` varchar(6) DEFAULT NULL,
+    `gambar` varchar(50) NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `artikel`

@@ -67,7 +67,7 @@ $result = $koneksi->query($sql);
         <br><br>
         Dengan semangat kolaborasi, kami percaya bahwa setiap langkah kecil yang kita ambil akan berdampak besar bagi bumi. Bersama-sama, mari kita wujudkan masa depan yang hijau, lestari, dan ramah lingkungan.
       </p>
-      <!-- <button class="about-btn">Pelajari Lebih Lanjut</button> -->
+      <!-- <button class="about-btn" >Pelajari Lebih Lanjut</button> -->
     </div>
   </div>
 </section>
@@ -209,10 +209,10 @@ $result = $koneksi->query($sql);
     <div class="footer-section">
       <h4>HALAMAN</h4>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="about.html">Tentang Kami</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Kontak</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="blog.php">Artikel</a></li>
+        <li><a href="contact.php">Contact</a></li>
       </ul>
     </div>
 
@@ -221,8 +221,8 @@ $result = $koneksi->query($sql);
       <h4>KONTAK</h4>
       <ul>
         <li><i class="fa-solid fa-location-dot"></i> Lhokseumawe, Aceh, Indonesia</li>
-        <li><i class="fa-solid fa-phone"></i> +62 813 4567 8901</li>
-        <li><i class="fa-solid fa-envelope"></i> info@samara.or.id</li>
+        <li><i class="fa-solid fa-phone"></i> +62 812 3456 7890</li>
+        <li><i class="fa-solid fa-envelope"></i> contactsamaraofficial@gmail.com</li>
       </ul>
     </div>
   </div>
