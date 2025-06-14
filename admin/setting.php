@@ -1,3 +1,43 @@
+<?php
+session_start();
+require '../database/koneksi.php';
+
+// Cek login
+if (!isset($_SESSION['id_admin'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_admin = $_SESSION['id_admin'];
+
+// Ambil data admin
+$result = mysqli_query($koneksi, "SELECT * FROM admin WHERE id_admin = '$id_admin'");
+$data = mysqli_fetch_assoc($result);
+
+// Jika form disubmit
+if (isset($_POST['submit'])) {
+    $username = $_POST['nama_admin'];
+    $email = $_POST['email'];
+    $old = $_POST['old_password'];
+    $new = $_POST['new_password'];
+
+    // Cek password lama
+    if ($data['password'] === $old) {
+        // Update semua data
+        $update = mysqli_query($koneksi, "UPDATE admin SET nama_admin = '$username', email = '$email', password = '$new' WHERE id_admin = '$id_admin'");
+        if ($update) {
+            echo "<script>alert('Data berhasil diubah'); window.location.href='setting.php';</script>";
+        } else {
+            echo "<script>alert('Gagal mengubah data'); window.location.href='setting.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Password lama salah!'); window.location.href='setting.php';</script>";
+    }
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,38 +62,58 @@
     <h1 class="setting-heading">Pengaturan Akun</h1>
 
     <div class="setting-content">
-      <form action="" method="post" class="form-akun">
-        <div class="form-section">
-          <div class="form-header">
-            <img src="https://cdn.iconscout.com/icon/free/png-128/person-1780867-1514182.png" alt="Profile" />
-            <h2>Informasi Akun</h2>
-          </div>
+  <!-- Logout Form Diletakkan Terpisah di Atas atau Sebelah Header -->
+<form action="logout.php" method="post" style="position: absolute; top: 20px; right: 20px;">
+  <button type="submit" class="btn-logout" style="margin-top: 70px; background-color: #d9534f; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </button>
+</form>
 
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Masukkan Username" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Masukkan Email" required />
-          </div>
-
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="inputPassword" name="password" placeholder="Masukkan Password" required />
-          </div>
-
-          <div class="form-group checkbox-group">
-            <input type="checkbox" onclick="togglePassword()" />
-            <label>Tampilkan Password</label>
-          </div>
-
-          <button class="btn-submit" type="submit" name="submit">
-            <i class="fa-solid fa-save"></i> Simpan Perubahan
-          </button>
-        </div>
+      <form action="setting.php" method="post" class="form-akun">
+  <div class="form-section">
+    <div class="form-header" style="display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="https://cdn.iconscout.com/icon/free/png-128/person-1780867-1514182.png" alt="Profile" />
+        <h2>Informasi Akun</h2>
+      </div>
       </form>
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="nama_admin" placeholder="Masukkan Username"
+             value="<?php echo htmlspecialchars($data['nama_admin']); ?>" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Masukkan Email"
+             value="<?php echo htmlspecialchars($data['email']); ?>" required />
+    </div>
+
+    <div class="form-group">
+      <label for="old_password">Password Lama</label>
+      <input type="password" id="old_password" name="old_password" placeholder="Masukkan Password Lama"
+      value="<?php echo htmlspecialchars($data['password']); ?>"
+      required />
+    </div>
+
+    <div class="form-group">
+      <label for="new_password">Password Baru</label>
+      <input type="password" id="new_password" name="new_password" placeholder="Masukkan Password Baru" required />
+    </div>
+
+    <div class="form-group checkbox-group">
+      <input type="checkbox" onclick="togglePassword()" />
+      <label>Tampilkan Password</label>
+    </div>
+
+    <button class="btn-submit" type="submit" name="submit">
+      <i class="fa-solid fa-save"></i> Simpan Perubahan
+    </button>
+  </div>
+</form>
+
     </div>
   </div>
 
@@ -107,16 +167,13 @@
 
 
   <script>
-    function togglePassword() {
-      var input = document.getElementById("inputPassword");
-      input.type = input.type === "password" ? "text" : "password";
-    }
-  </script>
-  <script>
-  let loading = document.getElementById('loading'); 
-  window.addEventListener('load', function(){
-    if (loading) loading.style.display = "none";
-  });
+  function togglePassword() {
+  const oldPass = document.getElementById("old_password");
+  const newPass = document.getElementById("new_password");
+  const type = oldPass.type === "password" ? "text" : "password";
+  oldPass.type = type;
+  newPass.type = type;
+}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 

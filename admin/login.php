@@ -12,13 +12,13 @@
 <body>
     <div class="container">
 
-        <form action="../database/ceklogin.php" method="post">
+        <form action="ceklogin.php" method="post">
         <div class="bungkus">
 
                 <h1>Login</h1>
                 <div class="input">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="name" placeholder="username" required>
+                    <label for="username">ID Admin</label>
+                    <input type="text" name="id_admin" id="name" placeholder="id_Admin" required>
                 </div>      
                 <div class="niput">
                     <label for="password">Password</label>

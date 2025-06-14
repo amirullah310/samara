@@ -209,6 +209,20 @@
 }
 
 
+.btn-logout {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-logout:hover {
+  background-color: #c9302c;
+}
 
 
 

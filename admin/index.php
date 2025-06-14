@@ -1,12 +1,12 @@
 <?php
 require '../database/koneksi.php';
 
-// session_start();
-// if (!isset($_SESSION['id_admin'])) {
-//   header("location:login.php");
-//   exit;
-// }
-// error_reporting(0);
+session_start();
+if (!isset($_SESSION['id_admin'])) {
+  header("location:login.php");
+  exit;
+}
+error_reporting(0);
 
 
 // Ambil data user dan blog terbaru
