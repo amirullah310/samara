@@ -48,7 +48,7 @@ $result = $koneksi->query($sql);
          <span class="highlight">Ma</span>nusia<span class="highlight"> Ra</span>mah Lingkungan
         </div>
     </div>
-    <a href="about.html"><button class="cta-button">Pelajari Lebih Lanjut</button></a>
+    <a href="about.php"><button class="cta-button">Pelajari Lebih Lanjut</button></a>
   </div>
   <div class="hero-right fade-left" data-aos="fade-left" data-aos-duration="1200" data-aos-parallax="true">
     <img class="img-home" src="img/gambar-1.png" alt="Ilustrasi Alam">
