@@ -12,6 +12,7 @@ if (isset($_GET['id'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog | SAMARA</title>
+  <link rel="icon" href="img/icon-logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="css/event-detail.css" />
   <script src="https://kit.fontawesome.com/aa9a0b170b.js" crossorigin="anonymous"></script>
   <!-- <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" /> -->

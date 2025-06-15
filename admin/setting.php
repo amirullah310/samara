@@ -19,19 +19,54 @@ if (isset($_POST['submit'])) {
     $username = $_POST['nama_admin'];
     $email = $_POST['email'];
     $old = $_POST['old_password'];
-    $new = $_POST['new_password'];
+    $new = !empty($_POST['new_password']) ? $_POST['new_password'] : $data['password'];
+
 
     // Cek password lama
     if ($data['password'] === $old) {
         // Update semua data
         $update = mysqli_query($koneksi, "UPDATE admin SET nama_admin = '$username', email = '$email', password = '$new' WHERE id_admin = '$id_admin'");
         if ($update) {
-            echo "<script>alert('Data berhasil diubah'); window.location.href='setting.php';</script>";
-        } else {
-            echo "<script>alert('Gagal mengubah data'); window.location.href='setting.php';</script>";
-        }
+          echo "<script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  Swal.fire({
+                      icon: 'success',
+                      title: 'Berhasil!',
+                      text: 'Data berhasil diubah!',
+                      confirmButtonColor: '#3085d6'
+                  }).then(function() {
+                      window.location.href = 'setting.php';
+                  });
+              });
+          </script>";
+      } else {
+          echo "<script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Gagal!',
+                      text: 'Gagal mengubah data!',
+                      confirmButtonColor: '#d33'
+                  }).then(function() {
+                      window.location.href = 'setting.php';
+                  });
+              });
+          </script>";
+      }      
     } else {
-        echo "<script>alert('Password lama salah!'); window.location.href='setting.php';</script>";
+      echo "<script>
+      document.addEventListener('DOMContentLoaded', function() {
+          Swal.fire({
+              icon: 'error',
+              title: 'Gagal!',
+              text: 'Password lama salah!',
+              confirmButtonColor: '#d33'
+          }).then(function() {
+              window.location.href = 'setting.php';
+          });
+      });
+  </script>";
+  
     }
 }
 ?>
@@ -80,6 +115,13 @@ if (isset($_POST['submit'])) {
     </div>
 
     <div class="form-group">
+  <label for="username">ID Admin</label>
+  <input type="text" id="username" name="id_admin"
+         value="<?php echo htmlspecialchars($data['id_admin']); ?>" readonly class="form-control" />
+</div>
+
+
+    <div class="form-group">
       <label for="username">Username</label>
       <input type="text" id="username" name="nama_admin" placeholder="Masukkan Username"
              value="<?php echo htmlspecialchars($data['nama_admin']); ?>" required />
@@ -93,14 +135,14 @@ if (isset($_POST['submit'])) {
 
     <div class="form-group">
       <label for="old_password">Password Lama</label>
-      <input type="password" id="old_password" name="old_password" placeholder="Masukkan Password Lama"
-      value="<?php echo htmlspecialchars($data['password']); ?>"
+      <input type="text" id="old_password" name="old_password" placeholder="Masukkan Password Lama"
+      value="<?php echo htmlspecialchars($data['password']); ?>" readonly class="form-control"
       required />
     </div>
 
     <div class="form-group">
       <label for="new_password">Password Baru</label>
-      <input type="password" id="new_password" name="new_password" placeholder="Masukkan Password Baru" required />
+      <input type="password" id="new_password" name="new_password" placeholder="Masukkan Password Baru" />
     </div>
 
     <div class="form-group checkbox-group">
@@ -177,7 +219,7 @@ if (isset($_POST['submit'])) {
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="js/setting.js"></script>
 </body>
 </html>

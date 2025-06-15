@@ -67,6 +67,29 @@ function generateIdArtikel($koneksi) {
 }
 
 $idBaru = generateIdArtikel($koneksi);
+
+// Alert Edit
+if (isset($_GET['edit'])): ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      <?php if ($_GET['edit'] === 'sukses'): ?>
+        Swal.fire({
+          icon: 'success',
+          title: 'Berhasil!',
+          text: 'Artikel berhasil diperbarui.',
+          confirmButtonColor: '#3085d6'
+        });
+      <?php else: ?>
+        Swal.fire({
+          icon: 'error',
+          title: 'Gagal!',
+          text: 'Gagal memperbarui artikel.',
+          confirmButtonColor: '#d33'
+        });
+      <?php endif; ?>
+    });
+  </script>
+  <?php endif;
 ?>
 
 
@@ -187,9 +210,12 @@ $idBaru = generateIdArtikel($koneksi);
                     <a href="detail_artikel.php?id=<?= $artikel['id_artikel']; ?>" class="btn-detail">
                       <i class="fa-solid fa-circle-info"></i> Detail
                     </a>
-                    <a href="edit_artikel.php?id=<?= $artikel['id_artikel']; ?>" class="btn-edit">
+                    <button type="button" style="border:1px solid green;" 
+                      class="btn-edit" 
+                      onclick='openEditModal(
+                        <?= json_encode($artikel) ?>)'>
                       <i class="fa-solid fa-pen-to-square"></i> Edit
-                    </a>
+                    </button>
 <a href="#" class="btn-delete" onclick="confirmDelete('<?= $artikel['id_artikel']; ?>')">
   <i class="fa-solid fa-trash"></i> Hapus
 </a>
@@ -311,6 +337,47 @@ $idBaru = generateIdArtikel($koneksi);
   </div>
 </div>
 
+<!-- modal edit -->
+<div id="modalEdit" class="modal">
+  <div class="modal-content">
+    <span onclick="document.getElementById('modalEdit').style.display='none'" class="close">&times;</span>
+    <h2>Edit Artikel</h2>
+    <form id="editForm" action="edit_artikel.php" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="id_artikel" id="edit_id_artikel">
+
+      <label>Judul Artikel</label>
+      <input type="text" name="judul" id="edit_judul" required>
+
+      <label>Deskripsi Singkat</label>
+      <textarea name="deskripsi_singkat" id="edit_deskripsi_singkat" rows="2" required></textarea>
+
+      <label>Isi Artikel</label>
+      <textarea name="isi" id="edit_isi" rows="9" required></textarea>
+
+      <label>Upload Gambar Baru (opsional)</label>
+      <input type="file" name="gambar" accept="image/*">
+
+      <label>Status</label>
+      <select name="status" id="edit_status" required>
+        <option value="draft">Draft</option>
+        <option value="publish">Publish</option>
+      </select>
+
+      <label for="id_tipe">Tipe Artikel</label>
+      <select name="id_tipe" id="edit_id_tipe" required>
+        <option value="">-- Pilih Tipe Artikel --</option>
+        <?php foreach ($dataTipeArtikel as $tipe): ?>
+          <option value="<?= htmlspecialchars($tipe['id_tipe']) ?>">
+            <?= htmlspecialchars($tipe['id_tipe']) ?> - <?= htmlspecialchars($tipe['nama_tipe']) ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
+
+      <button type="submit" class="btn-submit">Simpan Perubahan</button>
+    </form>
+  </div>
+</div>
+
 
 
 
@@ -338,6 +405,21 @@ $idBaru = generateIdArtikel($koneksi);
       modal.style.display = "none";
     }
   }
+</script>
+
+
+<!-- script edit -->
+<script>
+function openEditModal(data) {
+  document.getElementById('modalEdit').style.display = 'block';
+
+  document.getElementById('edit_id_artikel').value = data.id_artikel;
+  document.getElementById('edit_judul').value = data.judul;
+  document.getElementById('edit_deskripsi_singkat').value = data.deskripsi_singkat;
+  document.getElementById('edit_isi').value = data.isi;
+  document.getElementById('edit_status').value = data.status;
+  document.getElementById('edit_id_tipe').value = data.id_tipe;
+}
 </script>
 
 

@@ -7,9 +7,6 @@
             <div class="logo-icon">
                 <img class="img-icon" src="img/icon-logo.png" alt="Logo">
             </div>
-            <div class="logo-title">
-                <a class="title-icon" href="index.php">SAMARA</a>
-            </div>
         </div>
         <ul class="menu-list">
             <div class="icon cancel-btn">

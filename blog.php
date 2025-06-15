@@ -10,7 +10,7 @@ $keyword_escaped = $koneksi->real_escape_string($keyword);
 $tipe_escaped = $koneksi->real_escape_string($tipe);
 
 // Query dinamis
-$query = "SELECT * FROM artikel WHERE 1";
+$query = "SELECT * FROM artikel WHERE status = 'publish'";
 
 if (!empty($keyword)) {
   $query .= " AND (judul LIKE '%$keyword_escaped%' OR isi LIKE '%$keyword_escaped%')";
@@ -21,6 +21,7 @@ if (!empty($tipe)) {
 
 $query .= " ORDER BY tanggal_publish DESC";
 $result = $koneksi->query($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +29,7 @@ $result = $koneksi->query($query);
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="img/icon-logo.png" type="image/x-icon" />
   <title>Blog | SAMARA</title>
   <link rel="stylesheet" href="css/blog.css" />
   <script src="https://kit.fontawesome.com/aa9a0b170b.js" crossorigin="anonymous"></script>

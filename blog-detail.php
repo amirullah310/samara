@@ -21,6 +21,7 @@ $data = mysqli_fetch_assoc($query);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><?= $data ? $data['judul'] : 'Artikel Tidak Ditemukan' ?> | SAMARA</title>
+  <link rel="icon" href="img/icon-logo.png" type="image/x-icon" />
   <link rel="stylesheet" href="css/blog-detail.css" />
   <script src="https://kit.fontawesome.com/aa9a0b170b.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">

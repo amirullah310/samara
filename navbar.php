@@ -5,7 +5,7 @@
     <div class="content">
         <div class="logo">
             <div class="logo-icon">
-                <img class="img-icon" src="img/icon-logo.png" alt="">
+                <img class="img-icon" src="./img/icon-logo.png" alt="">
             </div>
             <div class="logo-title">
                 <a class="title-icon" href="">SAMARA</a>

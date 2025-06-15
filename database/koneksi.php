@@ -1,15 +1,29 @@
 <?php
-date_default_timezone_set('Asia/Jakarta');
-$koneksi = mysqli_connect("localhost","root","","db_samara");
+$koneksi = mysqli_connect("localhost", "root", "", "db_samara");
 
-function query($query){
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Fungsi query yang aman
+function query($sql, $params = []) {
     global $koneksi;
-    $result = mysqli_query($koneksi,$query);
-    $rows =[];
-    while($user = mysqli_fetch_assoc($result)){
-        $rows[] = $user;
+    
+    if ($params) {
+        $stmt = $koneksi->prepare($sql);
+        if (!$stmt) {
+            die("Prepare failed: " . $koneksi->error);
+        }
+        
+        $types = str_repeat('s', count($params));
+        $stmt->bind_param($types, ...$params);
+        $stmt->execute();
+        return $stmt;
+    } else {
+        $result = mysqli_query($koneksi, $sql);
+        if (!$result) {
+            die("Query failed: " . mysqli_error($koneksi));
+        }
+        return $result;
     }
-    return $rows;
-};
-
-?>
+}

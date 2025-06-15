@@ -9,6 +9,7 @@ $result = $koneksi->query($sql);
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="img/icon-logo.png" type="image/x-icon" />
     <title>Home | SAMARA</title>
     
     <!-- Style CSS eksternal -->

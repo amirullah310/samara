@@ -1,36 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+  <meta charset="UTF-8">
+  <title>Admin Login</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 <body>
-    <div class="container">
 
-        <form action="ceklogin.php" method="post">
-        <div class="bungkus">
+  <div class="login-box">
+    <div class="login-header">
+      <div class="avatar">
+        <i class="fa-solid fa-user-tie"></i>
+      </div>
+      <h2>ADMIN</h2>
+    </div>
 
-                <h1>Login</h1>
-                <div class="input">
-                    <label for="username">ID Admin</label>
-                    <input type="text" name="id_admin" id="name" placeholder="id_Admin" required>
-                </div>      
-                <div class="niput">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="password" required>
-                </div>
-                <center>
-                    <input id="submit-btn" type="submit" name="tambah" value="Login">
-                    <a href="register.php" id="sign-up">Belum Punya akun?</a>
-                </center>    
-            </form>
-            </div>
-        </div>
-    
+    <form action="ceklogin.php" method="post" class="login-form">
+      <div class="input-group">
+        <i class="fa-solid fa-user icon"></i>
+        <input type="text" placeholder="Username" name="id_admin" required>
+      </div>
+
+      <div class="input-group">
+        <i class="fa-solid fa-eye icon toggle-password" onclick="togglePassword()"></i>
+        <input type="password" placeholder="Password" id="password" name="password" required>
+      </div>
+
+      <button type="submit" class="btn-login">Sign in</button>
+    </form>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const icon = document.querySelector('.toggle-password');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+  </script>
+
 </body>
 </html>
